@@ -7,9 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import shoshin.alex.tutusoap.services.AlreadyPaidException_Exception;
 import shoshin.alex.tutusoap.services.Terminal;
 import shoshin.alex.tutusoap.services.TerminalService;
 import shoshin.alex.tutusoap.services.Ticket;
+import shoshin.alex.tutusoap.services.TicketDoesNotExistException_Exception;
 import shoshin.alex.tutusoap.utils.DateFactory;
 
 @Controller
@@ -70,6 +72,28 @@ public class TerminalController {
                                          + ", price - " + ticket.getPrice().getCount() + ticket.getPrice().getCurrency().name()
                                          + ", status - " + ticket.getStatus().name());
         model.addAttribute("ticketId", ticketId);
+        return getTerminalPage(model);
+    }
+    
+    @RequestMapping(value = "/terminal", params = {"payForTicket"})
+    public String payForTicket(Model model, @RequestParam(value = "payForTicket") int ticketId) {
+        try {
+            terminal.payForTicket(ticketId);
+            model.addAttribute("resultInfo", "seccessfully paid");
+            model.addAttribute("ticketId", ticketId);
+        } catch (AlreadyPaidException_Exception e) {
+            model.addAttribute("resultInfo", "you can't pay twise");
+            model.addAttribute("ticketId", ticketId);
+        } catch (TicketDoesNotExistException_Exception e) {
+            model.addAttribute("resultInfo", "such ticket doesn't exist");
+        }
+        
+        return getTerminalPage(model);
+    }
+    
+    @RequestMapping(value = "/terminal", params = {"returnTicket"})
+    public String returnTicket(Model model, @RequestParam(value = "returnTicket") int ticketId) {
+        terminal.returnTicket(ticketId);
         return getTerminalPage(model);
     }
     
