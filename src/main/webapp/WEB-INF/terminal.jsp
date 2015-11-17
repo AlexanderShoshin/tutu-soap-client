@@ -2,6 +2,72 @@
     <head>
     </head>
     <body>
-        <h1>Hello there</h1>
+        ${reservation}
+        <div>
+            <h2>Ticket reservation</h2>
+            <form>
+                <p>
+                    <input type="submit" value="reserve">
+                </p>
+                <p>
+                    Name:
+                    <br>
+                    <input type="text" name="name" value="Alexander">
+                </p>
+                <p>
+                    Surname:
+                    <br>
+                    <input type="text" name="surname" value="Shoshin">
+                </p>
+                <p>
+                    Patronymic:
+                    <br>
+                    <input type="text" name="patronymic" value="">
+                </p>
+                <p>
+                    Birth date:
+                    <br>
+                    <input type="number" name="birthDay" min="1" max="31" step="1" value="16">
+                    <input type="number" name="birthMonth" min="1" max="12" step="1" value="5">
+                    <input type="number" name="birthYear" min="1980" max="2000" step="1" value="1987">
+                </p>
+                <p>
+                    From:
+                    <br>
+                    <select name="departurePoint">
+					  <option value="Tver">Tver</option>
+					  <option value="Oslo">Oslo</option>
+					</select>
+                </p>
+                <p>
+                    Departure time:
+                    <br>
+                    <input type="number" name="departureDay" min="1" max="31" step="1" value="1">
+                    <input type="number" name="departureMonth" min="1" max="12" step="1" value="1">
+                    <input type="number" name="departureYear" min="2016" max="2016" step="1" value="2016">
+                    <br>
+                    <input type="number" name="departureHours" min="0" max="23" step="1" value="12">
+                    <input type="number" name="departureMinutes" min="0" max="59" step="1" value="0">
+                </p>
+                <p>
+                    To:
+                    <br>
+                    <select name="destinationPoint">
+                      <option value="Oslo">Oslo</option>
+                      <option value="Tver">Tver</option>
+                    </select>
+                </p>
+                <p>
+                    Destination time:
+                    <br>
+                    <input type="number" name="destinationDay" min="1" max="31" step="1" value="1">
+                    <input type="number" name="destinationMonth" min="1" max="12" step="1" value="2">
+                    <input type="number" name="destinationYear" min="2016" max="2016" step="1" value="2016">
+                    <br>
+                    <input type="number" name="destinationHours" min="0" max="23" step="1" value="12">
+                    <input type="number" name="destinationMinutes" min="0" max="59" step="1" value="0">
+                </p>
+            </form>
+        </div>
     </body>
 </html>
