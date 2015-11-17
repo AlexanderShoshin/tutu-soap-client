@@ -23,7 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="destinationPoint" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="destinationTime" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="passenger" type="{http://services.tutusoap.alex.shoshin/}passenger" minOccurs="0"/>
- *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="price" type="{http://services.tutusoap.alex.shoshin/}price" minOccurs="0"/>
  *         &lt;element name="status" type="{http://services.tutusoap.alex.shoshin/}ticketStatus" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -52,7 +52,7 @@ public class Ticket {
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar destinationTime;
     protected Passenger passenger;
-    protected int price;
+    protected Price price;
     @XmlSchemaType(name = "string")
     protected TicketStatus status;
 
@@ -179,16 +179,24 @@ public class Ticket {
     /**
      * Gets the value of the price property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Price }
+     *     
      */
-    public int getPrice() {
+    public Price getPrice() {
         return price;
     }
 
     /**
      * Sets the value of the price property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Price }
+     *     
      */
-    public void setPrice(int value) {
+    public void setPrice(Price value) {
         this.price = value;
     }
 

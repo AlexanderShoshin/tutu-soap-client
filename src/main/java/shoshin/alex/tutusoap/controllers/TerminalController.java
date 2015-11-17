@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import shoshin.alex.tutusoap.services.Terminal;
 import shoshin.alex.tutusoap.services.TerminalService;
+import shoshin.alex.tutusoap.services.Ticket;
 import shoshin.alex.tutusoap.utils.DateFactory;
 
 @Controller
@@ -54,7 +55,21 @@ public class TerminalController {
                                               destinationPoint,
                                               DateFactory.newDate(departureYear, departureMonth, departureDay, departureHours, departureMinutes),
                                               DateFactory.newDate(destinationYear, destinationMonth, destinationDay, destinationHours, destinationMinutes));
-        model.addAttribute("reservation", "ticket number " + ticketId + " reserved to " + name + " " + surname);
+        model.addAttribute("resultInfo", "ticket number " + ticketId + " reserved to " + name + " " + surname);
+        model.addAttribute("ticketId", ticketId);
+        return getTerminalPage(model);
+    }
+    
+    @RequestMapping(value = "/terminal", params = {"getTicket"})
+    public String getTicket(Model model, @RequestParam(value = "getTicket") int ticketId) {
+        Ticket ticket = terminal.getTicket(ticketId);
+        
+        model.addAttribute("resultInfo", "passenger - " + ticket.getPassenger().getName() + " " + ticket.getPassenger().getSurname()
+                                         + ", departure - " + ticket.getDeparturePoint() + " " + ticket.getDepartureTime()
+                                         + ", destination - " + ticket.getDeparturePoint() + " " + ticket.getDestinationTime()
+                                         + ", price - " + ticket.getPrice().getCount() + ticket.getPrice().getCurrency().name()
+                                         + ", status - " + ticket.getStatus().name());
+        model.addAttribute("ticketId", ticketId);
         return getTerminalPage(model);
     }
     

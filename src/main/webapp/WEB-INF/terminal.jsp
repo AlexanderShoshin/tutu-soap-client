@@ -2,7 +2,7 @@
     <head>
     </head>
     <body>
-        ${reservation}
+        ${resultInfo}
         <div>
             <h2>Ticket reservation</h2>
             <form>
@@ -69,5 +69,19 @@
                 </p>
             </form>
         </div>
+        <div>
+            <form>
+	           <input type="submit" value="get ticket">
+	           <input type="text" name="getTicket" value="${ticketId}">
+	        </form>
+	        <form>
+               <input type="submit" value="pay for ticket">
+               <input type="text" name="payForTicket" value="${ticketId}">
+            </form>
+            <form>
+               <input type="submit" value="return ticket">
+               <input type="text" name="returnTicket" value="${ticketId}">
+            </form>
+	    </div>
     </body>
 </html>

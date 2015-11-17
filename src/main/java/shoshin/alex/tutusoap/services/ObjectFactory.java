@@ -139,6 +139,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Price }
+     * 
+     */
+    public Price createPrice() {
+        return new Price();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReserveTicket }{@code >}}
      * 
      */
