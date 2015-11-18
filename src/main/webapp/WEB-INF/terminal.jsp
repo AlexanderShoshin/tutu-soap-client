@@ -1,9 +1,26 @@
 <html>
     <head>
+        <style>
+            div.form {
+                display: inline-block;
+                margin: 0;
+                vertical-align: top;
+            }
+            div.info {
+                color: #090;
+            }
+
+            h2 {
+                font-size: 1em;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
-        ${resultInfo}
-        <div>
+        <div class="info">
+            ${resultInfo}
+        </div>
+        <div class="form">
             <h2>Ticket reservation</h2>
             <form>
                 <p>
@@ -35,9 +52,9 @@
                     From:
                     <br>
                     <select name="departurePoint">
-					  <option value="Tver">Tver</option>
-					  <option value="Oslo">Oslo</option>
-					</select>
+                      <option value="Tver">Tver</option>
+                      <option value="Oslo">Oslo</option>
+                    </select>
                 </p>
                 <p>
                     Departure time:
@@ -69,12 +86,13 @@
                 </p>
             </form>
         </div>
-        <div>
+        <div class="form">
+            <h2>Ticket actions</h2>
             <form>
-	           <input type="submit" value="get ticket">
-	           <input type="text" name="getTicket" value="${ticketId}">
-	        </form>
-	        <form>
+               <input type="submit" value="get ticket">
+               <input type="text" name="getTicket" value="${ticketId}">
+            </form>
+            <form>
                <input type="submit" value="pay for ticket">
                <input type="text" name="payForTicket" value="${ticketId}">
             </form>
@@ -82,6 +100,6 @@
                <input type="submit" value="return ticket">
                <input type="text" name="returnTicket" value="${ticketId}">
             </form>
-	    </div>
+        </div>
     </body>
 </html>
